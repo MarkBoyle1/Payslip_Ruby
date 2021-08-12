@@ -1,3 +1,4 @@
+require 'csv'
 
 class Payslip
 
@@ -23,4 +24,11 @@ class Payslip
         puts ' '
         puts "Thank you for using MYOB!"
     end
+
+    def output_csv_file
+        CSV.open("./payslips.csv", "a+", :write_headers=> !File.file?("./payslips.csv"), :headers => ['Name', 'Pay Period', 'Gross Income', 'Income Tax', 'Net Income', 'Super Amount']) do | csv |
+            csv << [@name, @pay_period, @gross_income, @income_tax, @net_income, @super_amount]
+        end
+    end
+
 end

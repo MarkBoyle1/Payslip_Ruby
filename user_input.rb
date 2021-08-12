@@ -30,6 +30,7 @@ class UserInput
     
         payslip = Payslip.new(name, pay_period, super_rate, gross_income, income_tax)
         payslip.display_payslip
+        payslip.output_csv_file
     end
 
     def get_user_input

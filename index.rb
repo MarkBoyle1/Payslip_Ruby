@@ -21,8 +21,8 @@ if has_file == 'y'
         user.generate_payslip
     end
 elsif has_file == 'n'
-    user1 = UserInput.new(false)
-    user1.generate_payslip
+    user = UserInput.new(false)
+    user.generate_payslip
 else 
     puts "Please enter y or n:"
     has_file = gets.downcase.chomp
