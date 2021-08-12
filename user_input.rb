@@ -3,18 +3,23 @@ require_relative('./payslip')
 
 class UserInput
 
-    def initialize
+    def initialize(csv_data)
         @first_name = ''
         @surname = ''
         @annual_salary = ''
         @super_rate = ''
         @payment_start_date = ''
         @payment_end_date = ''
+        @csv_data = csv_data
     end
 
     def generate_payslip
-        get_user_input
-    
+        if @csv_data
+            get_csv_data
+        else
+            get_user_input
+        end
+
         tax = Tax.new(@annual_salary)
         income_tax = tax.calculate_income_tax
     
@@ -55,6 +60,15 @@ class UserInput
         
         puts "Please input your payment end date:"
         @payment_end_date = gets.chomp
+    end
+
+    def get_csv_data
+        @first_name = @csv_data[0]
+        @surname = @csv_data[1]
+        @annual_salary = @csv_data[2].to_i
+        @super_rate = @csv_data[3].to_f
+        @payment_start_date = @csv_data[4]
+        @payment_end_date = @csv_data[5]
     end
 
     def get_name

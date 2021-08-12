@@ -11,7 +11,7 @@ class Payslip
     end
 
     def display_payslip
-        system 'clear'
+        
         puts "Your payslip has been generated!"
         puts ' '
         puts "Name: " + @name
