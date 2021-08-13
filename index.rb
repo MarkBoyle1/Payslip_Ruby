@@ -8,7 +8,6 @@ def payslip_generator_welcome
     has_file = gets.downcase.chomp
     process_filepath_response(has_file)
 
-    puts "Thank you for using MYOB!"
 end
 
 def process_filepath_response(has_file)
@@ -31,7 +30,7 @@ def validate_csv_file
         puts "File cannot be found. Please enter a valid filepath:" 
         csv_filepath = gets.chomp
     end
-        process_csv_file(csv_filepath)
+    process_csv_file(csv_filepath)
 end
 
 def process_csv_file(csv_filepath)
@@ -41,10 +40,12 @@ def process_csv_file(csv_filepath)
         data << row
     end
 
-    data.each do | index |
-        user = UserInput.new(index)
+    data.each do | row |
+        user = UserInput.new(row)
         user.generate_payslip
     end
 end
 
 payslip_generator_welcome
+
+puts "Thank you for using MYOB!"
