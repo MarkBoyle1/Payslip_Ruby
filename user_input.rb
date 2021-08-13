@@ -61,6 +61,7 @@ class UserInput
         
         puts "Please input your payment end date:"
         @payment_end_date = gets.chomp
+        system 'clear'
     end
 
     def get_csv_data

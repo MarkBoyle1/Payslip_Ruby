@@ -13,7 +13,7 @@ class Payslip
 
     def display_payslip
         
-        puts "Your payslip has been generated!"
+        puts "Payslip generated for #{@name}!"
         puts ' '
         puts "Name: " + @name
         puts "Pay Period: " + @pay_period
@@ -22,11 +22,10 @@ class Payslip
         puts "Net Income: " + @net_income.to_s
         puts "Super: " + @super_amount.to_s
         puts ' '
-        puts "Thank you for using MYOB!"
     end
 
     def output_csv_file
-        CSV.open("./payslips.csv", "a+", :write_headers=> !File.file?("./payslips.csv"), :headers => ['Name', 'Pay Period', 'Gross Income', 'Income Tax', 'Net Income', 'Super Amount']) do | csv |
+        CSV.open('./payslips.csv', "a+", :write_headers=> !File.file?("./payslips.csv"), :headers => ['Name', 'Pay Period', 'Gross Income', 'Income Tax', 'Net Income', 'Super Amount']) do | csv |
             csv << [@name, @pay_period, @gross_income, @income_tax, @net_income, @super_amount]
         end
     end
